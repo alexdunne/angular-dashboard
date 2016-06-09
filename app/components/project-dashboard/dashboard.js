@@ -10,11 +10,16 @@
 
   function ProjectsDashboardController(projectsService) {
     var vm = this;
-    vm.projects = projectsService.getProjects();
+    vm.projectList = projectsService.getProjectList();
+    vm.getProjectData = getProjectData;
     vm.hideProject = hideProject;
 
     function hideProject (id) {
       projectsService.hideProject(id);
+    }
+
+    function getProjectData(id) {
+      return projectsService.getProject(id);
     }
   }
 })(angular);

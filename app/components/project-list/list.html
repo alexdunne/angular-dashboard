@@ -4,12 +4,19 @@
   <ul class="list-unstyled">
     <li 
       class="project-list__item" 
-      ng-class="{'project-list__item--hidden': !project.isVisible}"
-      ng-repeat="project in $ctrl.projects"
-      ng-click="$ctrl.toggleProjectVisiblity(project.id)"
+      ng-class="{'project-list__item--hidden': !$ctrl.getProjectData(projectId).isVisible}"
+      ng-repeat="projectId in $ctrl.projectList"
+      ng-drag-data="projectId"
+      ng-drag="true"
+      ng-drop="true" 
+      ng-drag-start="$ctrl.onDragStart($data,$event)"
+      ng-drag-stop="$ctrl.onDragStop($data,$event)"
+      ng-drop-success="$ctrl.onDropComplete($data,$event, projectId)"
       >
-      <img class="project-list__icon" src="http://loremflickr.com/30/30/dog" />
-      <h5 class="project-list__title">Name: {{ project.title }}</h5>
+      <div ng-click="$ctrl.toggleProjectVisiblity(projectId)">
+        <img class="project-list__icon" src="http://loremflickr.com/30/30/dog" />
+        <h5 class="project-list__title">Name: {{ $ctrl.getProjectData(projectId).title }}</h5>
+      </div>
     </li>
   </ul>
 </div>

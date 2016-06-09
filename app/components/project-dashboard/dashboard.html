@@ -2,12 +2,12 @@
   <h4>Project Dashboard</h4>
 
   <div class="row">
-    <div class="col-sm-6 col-xs-12" ng-repeat="project in $ctrl.projects" ng-show="project.isVisible">
-      <h5>Name: {{ project.title }}</h5>
-      <p>{{ project.description }}</p>
+    <div class="col-sm-6 col-xs-12" ng-repeat="projectId in $ctrl.projectList" ng-show="$ctrl.getProjectData(projectId).isVisible">
+      <h5>Name: {{ $ctrl.getProjectData(projectId).title }}</h5>
+      <p>{{ $ctrl.getProjectData(projectId).description }}</p>
       <button 
       class="btn btn-info" 
-      ng-click="$ctrl.hideProject(project.id)">
+      ng-click="$ctrl.hideProject(projectId)">
         Hide
       </button>
     </div>

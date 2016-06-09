@@ -1,3 +1,3 @@
 (function(angular) {
-  angular.module('dashboardApp', []);
+  angular.module('dashboardApp', ['ngDraggable']);
 })(angular);
