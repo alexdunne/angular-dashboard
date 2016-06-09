@@ -14,12 +14,35 @@
     vm.getProjectData = getProjectData;
     vm.hideProject = hideProject;
 
+    // Hook into the draggable events
+    vm.onDropComplete = onDropComplete;
+    vm.onDragStart = onDragStart;
+    vm.onDragStop = onDragStop;
+
     function hideProject (id) {
       projectsService.hideProject(id);
     }
 
     function getProjectData(id) {
       return projectsService.getProject(id);
+    }
+
+    function toggleProjectVisiblity(id) {
+      if (!dragging) {
+        projectsService.toggleProjectVisiblity(id);
+      }
+    }
+
+    function onDragStart(id, event) {
+      dragging = true;
+    }
+
+    function onDragStop(id, event) {
+      dragging = false;
+    }
+
+    function onDropComplete(id, event, dropProjectId) {
+      projectsService.moveProject(id, dropProjectId);
     }
   }
 })(angular);

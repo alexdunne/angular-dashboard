@@ -19,7 +19,11 @@
     vm.onDragStart = onDragStart;
     vm.onDragStop = onDragStop;
 
-    var dragging = false;
+    var dragging = false;    
+
+    function getProjectData(id) {
+      return projectsService.getProject(id);
+    }
 
     function toggleProjectVisiblity(id) {
       if (!dragging) {
@@ -37,10 +41,6 @@
 
     function onDropComplete(id, event, dropProjectId) {
       projectsService.moveProject(id, dropProjectId);
-    }
-
-    function getProjectData(id) {
-      return projectsService.getProject(id);
     }
   }
 

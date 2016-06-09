@@ -2,14 +2,26 @@
   <h4>Project Dashboard</h4>
 
   <div class="row">
-    <div class="col-sm-6 col-xs-12" ng-repeat="projectId in $ctrl.projectList" ng-show="$ctrl.getProjectData(projectId).isVisible">
-      <h5>Name: {{ $ctrl.getProjectData(projectId).title }}</h5>
-      <p>{{ $ctrl.getProjectData(projectId).description }}</p>
-      <button 
-      class="btn btn-info" 
-      ng-click="$ctrl.hideProject(projectId)">
-        Hide
-      </button>
+    <div 
+      class="col-sm-6 col-xs-12 project-box" 
+      ng-repeat="projectId in $ctrl.projectList" 
+      ng-show="$ctrl.getProjectData(projectId).isVisible"
+      ng-drag-data="projectId"
+      ng-drag="true"
+      ng-drop="true" 
+      ng-drag-start="$ctrl.onDragStart($data,$event)"
+      ng-drag-stop="$ctrl.onDragStop($data,$event)"
+      ng-drop-success="$ctrl.onDropComplete($data,$event, projectId)"
+      >
+      <div class="project-box__contents">
+        <h5>Name: {{ $ctrl.getProjectData(projectId).title }}</h5>
+        <p>{{ $ctrl.getProjectData(projectId).description }}</p>
+        <button 
+        class="btn btn-info" 
+        ng-click="$ctrl.hideProject(projectId)">
+          Hide
+        </button>
+      </div>
     </div>
   </div>
 </div>
