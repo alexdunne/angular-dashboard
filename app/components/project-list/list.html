@@ -1,0 +1,15 @@
+<div class="col-xs-3 project-list">
+  <h4>Project List</h4>
+  
+  <ul class="list-unstyled">
+    <li 
+      class="project-list__item" 
+      ng-class="{'project-list__item--hidden': !project.isVisible}"
+      ng-repeat="project in $ctrl.projects"
+      ng-click="$ctrl.toggleProjectVisiblity(project.id)"
+      >
+      <img class="project-list__icon" src="http://loremflickr.com/30/30/dog" />
+      <h5 class="project-list__title">Name: {{ project.title }}</h5>
+    </li>
+  </ul>
+</div>

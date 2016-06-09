@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="assets/index.css">
+</head>
+<body ng-app="dashboardApp">
+
+  <div class="container-fluid fill-height">
+    <div class="row fill-height">
+      <project-dashboard></project-dashboard>
+      <project-list></project-list>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="assets/vendor/angular-drag-and-drop-lists.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/shared/projects-service.js"></script>
+  <script src="app/components/project-dashboard/dashboard.js"></script>
+  <script src="app/components/project-list/list.js"></script>
+</body>
+</html>
