@@ -6,9 +6,9 @@
       controller: ProjectsDashboardController,
     });
 
-  ProjectsDashboardController.$inject = ['projectsService'];
+  ProjectsDashboardController.$inject = ['projectsService', 'socketService'];
 
-  function ProjectsDashboardController(projectsService) {
+  function ProjectsDashboardController(projectsService, socketService) {
     var vm = this;
     vm.projectList = projectsService.getProjectList();
     vm.getProjectData = getProjectData;
@@ -21,16 +21,11 @@
 
     function hideProject (id) {
       projectsService.hideProject(id);
+      socketService.emit('project:toggle-visiblility', { projectId: id });  
     }
 
     function getProjectData(id) {
       return projectsService.getProject(id);
-    }
-
-    function toggleProjectVisiblity(id) {
-      if (!dragging) {
-        projectsService.toggleProjectVisiblity(id);
-      }
     }
 
     function onDragStart(id, event) {
@@ -43,6 +38,15 @@
 
     function onDropComplete(id, event, dropProjectId) {
       projectsService.moveProject(id, dropProjectId);
+
+      socketService.emit('project:move', {
+        toBeMovedId: id,
+        toMoveToId: dropProjectId
+      });
     }
+
+    socketService.on('project:moved', function (data) { 
+      projectsService.moveProject(data.toBeMovedId, data.toMoveToId);
+    });
   }
 })(angular);

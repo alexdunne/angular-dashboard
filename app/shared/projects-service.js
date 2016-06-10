@@ -3,7 +3,6 @@
     .module('dashboardApp')
     .factory('projectsService', projectsService);
 
-
   function projectsService() {
     // Store the project data foreach project
     var projectsData = {
@@ -82,7 +81,7 @@
     function removeProject(id) {
       var index = projectList.indexOf(id);
       projectList.splice(index, 1);
-    }
+    }  
   }
 
 })(angular);

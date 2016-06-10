@@ -36,6 +36,18 @@ body {
   display: inline-block;
 }
 
+.project-box.drag-enter {
+  opacity: 0.65;
+}
+
+/* 
+  As we have both a drag and drop on each project we need to cancel out the 
+  drag enter opacity cahnge
+*/
+.project-box.drag-enter.drag-over {
+  opacity: 1;
+}
+
 .project-box__contents {
   padding-top: 10px;
   padding-right: 10px;
@@ -43,5 +55,11 @@ body {
   padding-left: 10px;
   background-color: #FFFFFF;
   border-radius: 2px;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);  
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2),0 1px 1px 0 rgba(0,0,0,0.14),0 2px 1px -1px rgba(0,0,0,0.12);  
+
+  transition: all 0.15s ease-in-out;
+}
+
+.project-box.dragging .project-box__contents {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); 
 }
