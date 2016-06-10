@@ -2,7 +2,7 @@
   angular
     .module('dashboardApp')
     .component('projectList', {
-      templateUrl: 'app/components/project-list/list.html',
+      templateUrl: 'components/project-list/list.html',
       controller: ProjectListController,
     });
 

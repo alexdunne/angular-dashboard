@@ -2,7 +2,7 @@
   angular
     .module('dashboardApp')
     .component('projectDashboard', {
-      templateUrl: 'app/components/project-dashboard/dashboard.html',
+      templateUrl: 'components/project-dashboard/dashboard.html',
       controller: ProjectsDashboardController,
     });
 
